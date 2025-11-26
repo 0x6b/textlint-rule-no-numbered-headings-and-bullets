@@ -1,7 +1,7 @@
 import type { TextlintRuleModule, TextlintRuleReporter } from "@textlint/types";
 
-const HEADER_PATTERN = /^(#{1,6}\s+)(\d+)\.\s+/;
-const LIST_ITEM_PATTERN = /^(\s*[-*+]\s+)(\d+)\.\s+/;
+const HEADER_PATTERN = /^(#{1,6}\s+)(\d+(?:\.\d+)*\.?)\s+/;
+const LIST_ITEM_PATTERN = /^(\s*[-*+]\s+)(\d+(?:\.\d+)*\.?)\s+/;
 
 const reporter: TextlintRuleReporter = ({ Syntax, RuleError, fixer, report, getSource }) => {
    return {
@@ -13,7 +13,7 @@ const reporter: TextlintRuleReporter = ({ Syntax, RuleError, fixer, report, getS
             const [fullMatch, prefix, number] = match;
             report(
                node,
-               new RuleError(`Found number prefix (${number}.) in heading`, {
+               new RuleError(`Found number prefix (${number}) in heading`, {
                   index: 0,
                   fix: fixer.replaceText(node, text.replace(fullMatch, prefix)),
                })
@@ -28,7 +28,7 @@ const reporter: TextlintRuleReporter = ({ Syntax, RuleError, fixer, report, getS
             const [fullMatch, prefix, number] = match;
             report(
                node,
-               new RuleError(`Found number prefix (${number}.) in list item`, {
+               new RuleError(`Found number prefix (${number}) in list item`, {
                   index: 0,
                   fix: fixer.replaceText(node, text.replace(fullMatch, prefix)),
                })
