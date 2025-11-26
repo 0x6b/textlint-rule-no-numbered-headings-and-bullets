@@ -207,5 +207,69 @@ Some text
             },
          ],
       },
+
+      // Hierarchical number prefixes (e.g., 1.1, 1.2., 1.4.1)
+      {
+         text: "### 1.1 Heading",
+         output: "### Heading",
+         errors: [
+            {
+               index: 0,
+               message: "Found number prefix (1.1) in heading",
+            },
+         ],
+      },
+      {
+         text: "### 1.2. Heading",
+         output: "### Heading",
+         errors: [
+            {
+               index: 0,
+               message: "Found number prefix (1.2.) in heading",
+            },
+         ],
+      },
+      {
+         text: "#### 1.4.1 Heading",
+         output: "#### Heading",
+         errors: [
+            {
+               index: 0,
+               message: "Found number prefix (1.4.1) in heading",
+            },
+         ],
+      },
+      {
+         text: "#### 1.4.2. Heading",
+         output: "#### Heading",
+         errors: [
+            {
+               index: 0,
+               message: "Found number prefix (1.4.2.) in heading",
+            },
+         ],
+      },
+
+      // Hierarchical number prefixes in list items
+      {
+         text: "- 1.1 Item",
+         output: "- Item",
+         errors: [
+            {
+               index: 0,
+               message: "Found number prefix (1.1) in list item",
+            },
+         ],
+      },
+      {
+         text: "* 2.3.4. Item",
+         output: "* Item",
+         errors: [
+            {
+               index: 0,
+               message: "Found number prefix (2.3.4.) in list item",
+            },
+         ],
+      },
    ],
 });
