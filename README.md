@@ -24,7 +24,7 @@ Or with npm:
 npm install @0x6b/textlint-rule-no-numbered-headings-and-bullets
 ```
 
-This module requires Node.js >= 20.0.0.
+This module requires Node.js >= 24.0.0 (LTS).
 
 ## Usage
 
