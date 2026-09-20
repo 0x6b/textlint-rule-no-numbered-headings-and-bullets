@@ -1,6 +1,6 @@
 {
   "name": "@0x6b/textlint-rule-no-numbered-headings-and-bullets",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "textlint rule which detects and reports numbered headings and bullet list items.",
   "publishConfig": {
     "access": "public"
@@ -34,7 +34,7 @@
     "build": "textlint-scripts build",
     "precommit": "lint-staged",
     "postcommit": "git reset",
-    "prepublish": "pnpm run build",
+    "prepack": "pnpm run build",
     "test": "textlint-scripts test",
     "format": "biome check --write .",
     "watch": "textlint-scripts build --watch"
