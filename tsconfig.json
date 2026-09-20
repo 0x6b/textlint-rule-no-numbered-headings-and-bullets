@@ -2,7 +2,6 @@
    "compilerOptions": {
       /* Basic Options */
       "module": "commonjs",
-      "moduleResolution": "node",
       "esModuleInterop": true,
       "noEmit": true,
       "target": "es2015",
