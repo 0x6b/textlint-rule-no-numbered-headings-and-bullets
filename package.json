@@ -34,7 +34,7 @@
     "build": "textlint-scripts build",
     "precommit": "lint-staged",
     "postcommit": "git reset",
-    "prepublish": "pnpm run build",
+    "prepack": "pnpm run build",
     "test": "textlint-scripts test",
     "format": "biome check --write .",
     "watch": "textlint-scripts build --watch"
