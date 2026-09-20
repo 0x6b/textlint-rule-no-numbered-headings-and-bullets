@@ -3,9 +3,21 @@ import type { TextlintRuleModule, TextlintRuleReporter } from "@textlint/types";
 const HEADER_PATTERN = /^(#{1,6}\s+)(\d+(?:\.\d+)*\.?)\s+/;
 const LIST_ITEM_PATTERN = /^(\s*[-*+]\s+)(\d+(?:\.\d+)*\.?)\s+/;
 
-const reporter: TextlintRuleReporter = ({ Syntax, RuleError, fixer, report, getSource }) => {
+type Options = {
+   header?: boolean;
+   bullet?: boolean;
+};
+
+const reporter: TextlintRuleReporter<Options> = (
+   { Syntax, RuleError, fixer, report, getSource },
+   { header = true, bullet = true } = {}
+) => {
    return {
       [Syntax.Header](node) {
+         if (!header) {
+            return;
+         }
+
          const text = getSource(node);
          const match = text.match(HEADER_PATTERN);
 
@@ -21,6 +33,10 @@ const reporter: TextlintRuleReporter = ({ Syntax, RuleError, fixer, report, getS
          }
       },
       [Syntax.ListItem](node) {
+         if (!bullet) {
+            return;
+         }
+
          const text = getSource(node);
          const match = text.match(LIST_ITEM_PATTERN);
 
@@ -41,4 +57,4 @@ const reporter: TextlintRuleReporter = ({ Syntax, RuleError, fixer, report, getS
 export default {
    linter: reporter,
    fixer: reporter,
-} as TextlintRuleModule;
+} as TextlintRuleModule<Options>;
