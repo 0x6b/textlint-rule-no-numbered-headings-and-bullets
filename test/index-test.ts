@@ -44,6 +44,14 @@ Some text
       // Headings with inline formatting (but no number prefix)
       "# **Bold** Heading",
       "# *Italic* Text",
+
+      // Disabled checks
+      {
+         text: `# 1. Numbered heading
+
+- 1. Numbered bullet`,
+         options: { header: false, bullet: false },
+      },
    ],
    invalid: [
       // Headings with number prefixes
@@ -268,6 +276,38 @@ Some text
             {
                index: 0,
                message: "Found number prefix (2.3.4.) in list item",
+            },
+         ],
+      },
+
+      // Disable only the heading check
+      {
+         text: `# 1. Numbered heading
+
+- 2. Numbered bullet`,
+         output: `# 1. Numbered heading
+
+- Numbered bullet`,
+         options: { header: false },
+         errors: [
+            {
+               message: "Found number prefix (2.) in list item",
+            },
+         ],
+      },
+
+      // Disable only the bullet check
+      {
+         text: `# 1. Numbered heading
+
+- 2. Numbered bullet`,
+         output: `# Numbered heading
+
+- 2. Numbered bullet`,
+         options: { bullet: false },
+         errors: [
+            {
+               message: "Found number prefix (1.) in heading",
             },
          ],
       },

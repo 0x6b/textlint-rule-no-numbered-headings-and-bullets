@@ -44,6 +44,24 @@ Via CLI:
 textlint --rule @0x6b/no-numbered-headings-and-bullets README.md
 ```
 
+### Options
+
+The heading and bullet checks can be enabled or disabled independently. Both are enabled by default.
+
+```json
+{
+  "rules": {
+    "@0x6b/no-numbered-headings-and-bullets": {
+      "header": true,
+      "bullet": false
+    }
+  }
+}
+```
+
+- `header` (`boolean`, default: `true`): Check ATX-style headings.
+- `bullet` (`boolean`, default: `true`): Check bullet list items.
+
 ### Build
 
 Builds source codes for publish to the `lib/` folder.
