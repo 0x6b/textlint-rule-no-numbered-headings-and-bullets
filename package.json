@@ -1,6 +1,6 @@
 {
   "name": "@0x6b/textlint-rule-no-numbered-headings-and-bullets",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "textlint rule which detects and reports numbered headings and bullet list items.",
   "publishConfig": {
     "access": "public"
